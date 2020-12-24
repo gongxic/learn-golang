@@ -6,4 +6,4 @@ COPY . /src
 RUN go build .
 
 EXPOSE 8084
-ENTRYPOINT ["./go-gin-example"]
+ENTRYPOINT ["./main"]
