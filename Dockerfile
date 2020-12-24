@@ -1,11 +1,9 @@
-FROM golang
+FROM golang:latest
 
-WORKDIR /src
+ENV GOPROXY https://goproxy.cn,direct
+WORKDIR $GOPATH/src/github.com/EDDYCJY/go-gin-example
+COPY . $GOPATH/src/github.com/EDDYCJY/go-gin-example
+RUN go build .
 
-ADD . /src
-
-RUN go build main.go
-
-EXPOSE 8080
-
-ENTRYPOINT ["./main"]
+EXPOSE 8084
+ENTRYPOINT ["./go-gin-example"]
