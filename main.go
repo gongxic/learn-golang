@@ -8,6 +8,10 @@ import (
 
 func main() {
 
+	b :=12
+	fmt.Println(b)
+
+
 	http.HandleFunc("/zc", hello)
 
 	http.ListenAndServe(":8084", nil)
