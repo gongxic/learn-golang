@@ -1,7 +1,11 @@
 FROM golang:alpine as build
-RUN go build main.go
 
-FROM alpine as run
-COPY --from=build /main .
+WORKDIR /go/src/app
+COPY . .
+
+RUN go get -d -v ./...
+RUN go install -v ./...
+
 EXPOSE 8084
-ENTRYPOINT ["./main"]
+CMD ["app"]
+
