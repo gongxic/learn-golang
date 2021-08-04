@@ -1,4 +1,4 @@
-FROM golang:latest-alpine
+FROM golang:alpine
 
 ENV GO111MODULE on
 ENV GOPROXY https://goproxy.cn,direct
