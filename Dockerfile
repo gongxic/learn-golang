@@ -1,10 +1,8 @@
-FROM golang:alpine
-
-ENV GO111MODULE on
-ENV GOPROXY https://goproxy.cn,direct
-WORKDIR $GOPATH/src/learngolang
-COPY . $GOPATH/src/learngolang
+FROM golang:alpine as build
+WORKDIR /src
 RUN go build main.go
 
+FROM alpine as run
+COPY --from=build /src .
 EXPOSE 8084
 ENTRYPOINT ["./main"]
